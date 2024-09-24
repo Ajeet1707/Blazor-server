@@ -1,0 +1,56 @@
+﻿@page "/virtual"
+@attribute [Authorize]
+
+
+<h3>Virtualize</h3>
+<div style="height:500px; width:1000px; display:flex; ">
+    @* using it through variable *@
+    <div style="height:100%; width:50%; overflow-y:auto;">
+        <Virtualize Items="@items" ItemSize="50">
+            <ItemContent>
+                @{
+                    <div style="height: 50px; border-bottom: 1px solid black; padding: 5px;">
+                        @context
+                    </div>
+                }
+            </ItemContent>
+        </Virtualize>
+    </div>
+
+    @* using it through API call *@
+    <div style="height:100%; width:50%; overflow-y:auto;">
+        <Virtualize ItemsProvider="LoadItems" ItemSize="50">
+            <ItemContent>
+                @{
+                    <div style="height: 50px; border-bottom: 1px solid black; padding: 5px;">
+                        @context
+                    </div>
+                }
+            </ItemContent>
+        </Virtualize>
+    </div>
+</div>
+
+
+
+
+@code {
+    private List<string> items;
+
+    protected override void OnInitialized()
+    {
+        // Generate a large number of items
+        items = Enumerable.Range(1, 10000).Select(i => $"Item {i}").ToList();
+    }
+
+    private async ValueTask<ItemsProviderResult<string>> LoadItems(ItemsProviderRequest request)
+    {
+        // Simulate data fetching
+        var totalItemCount = 10000;
+        var itemsToFetch = Enumerable.Range(request.StartIndex + 1, request.Count)
+                                     .Select(i => $"Item {i}").ToList();
+
+        // Return the subset of data and the total count
+        return new ItemsProviderResult<string>(itemsToFetch, totalItemCount);
+    }
+}

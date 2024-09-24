@@ -1,0 +1,19 @@
+﻿@page "/query"
+
+<h3>QueryNavigator</h3>
+<div>
+    <h1>Member Information</h1>
+    <p>Id: @Id</p>
+    <p>Is Valid: @IsValid</p>
+</div>
+
+@code {
+
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public string Id { get; set; }
+
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public bool IsValid { get; set; }
+}

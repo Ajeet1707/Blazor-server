@@ -1,0 +1,17 @@
+﻿@page "/injection"
+@using BlazorServerApp.Data.Infrastructure
+@inject IDemoService DemoService
+@attribute [Authorize]
+<h3>Service Demo</h3>
+
+<p>@message</p>
+
+@code {
+    private string message;
+
+    protected override void OnInitialized()
+    {
+        // Call a method from the service
+        message = DemoService.GetMessage();
+    }
+}

@@ -1,0 +1,44 @@
+﻿@* for this page we can put this using in _imports.razor file of here by @using 
+@using Microsoft.AspNetCore.Components.Authorization *@
+@* @using Blazored.Toast *@
+@* @using MatBlazor *@
+@inherits LayoutComponentBase
+
+<PageTitle>BlazorServerApp</PageTitle>
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <BlazorServerApp.Pages.Localization.Local></BlazorServerApp.Pages.Localization.Local>
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+            <AuthorizeView>
+                <NotAuthorized>
+                    <a href="/login">Login</a>
+                </NotAuthorized>
+                <Authorized>
+                    <a href="/logout">LogOut</a>
+                </Authorized>
+
+            </AuthorizeView>
+        </div>
+      @*   <MatToaster /> *@
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<BlazoredToasts Position="Blazored.Toast.Configuration.ToastPosition.TopRight"
+                Timeout="5"
+                IconType="Blazored.Toast.Configuration.IconType.FontAwesome"
+                SuccessClass="success-toast-override"
+                SuccessIcon="fa fa-thumbs-up"
+                ErrorIcon="fa fa-bug"
+                WarningIcon="fa fa-warning"
+                InfoIcon="fa fa-info">
+
+</BlazoredToasts>

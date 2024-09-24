@@ -1,0 +1,79 @@
+﻿@page "/login"
+@using BlazorServerApp.Data.Models
+@using BlazorServerApp.Data.Infrastructure
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using BlazorServerApp.Data.CustomAuthorization
+@inject IDemoService Service
+@inject NavigationManager navigate
+@inject AuthenticationStateProvider authenticationStateProvider
+@* @inject CustomAuthenticationStateProvider custom *@
+@inject BlazorSchoolAuthenticationStateProvider BlazorSchoolAuthenticationStateProvider
+
+
+<h3>Login</h3>
+
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 pt-4 pb-4 border">
+        <EditForm Model="@userData" OnValidSubmit="Authenticate" FormName="LoginForm">
+            <DataAnnotationsValidator />
+
+            <div class="mb-3">
+                <label for="name">UserName:</label>
+                <InputText id="name" @bind-Value="userData.UserName" class="form-control" placeholder="UserName" />
+                <ValidationMessage For="@(() => userData.UserName)" />
+            </div>
+
+            <div class="mb-3">
+                <label for="password">Password:</label>
+                <InputText id="pasword" type="password" @bind-Value="userData.Password" class="form-control" placeholder="Password" />
+                <ValidationMessage For="@(() => userData.Password)" />
+            </div>
+
+            <div class="mb-3">
+                <span class="text-danger text-center">
+                    @errorMessage
+                </span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+
+    private LoginViewModel userData = new LoginViewModel();
+    private string errorMessage;
+
+    private async Task Authenticate()
+    {
+        var user = BlazorSchoolAuthenticationStateProvider.LoginAsync(userData.UserName, userData.Password);
+
+        // var user = Service.AuthenticateUser(userData);
+        // if(!user)
+        // {
+        //     errorMessage = "Invalid UserName or Password";
+        //     return; 
+        // }
+
+        // var claims = new List<Claim>
+        // {
+        //     new Claim(ClaimTypes.Name, userData.UserName),
+        //     new Claim(ClaimTypes.Role, "View") // Add your role or other claims
+        // };
+
+        // var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        // var principal = new ClaimsPrincipal(identity);
+
+        // // // Notify the AuthenticationStateProvider of the authentication change
+        // // var customAuthStateProvider = (CustomAuthenticationStateProvider)authenticationStateProvider;
+        // // customAuthStateProvider.MarkUserAsAuthenticated(userData.UserName);
+        // custom.MarkUserAsAuthenticated(userData.UserName);
+
+        // Navigate to the homepage after login
+        navigate.NavigateTo("/");
+    }
+
+}

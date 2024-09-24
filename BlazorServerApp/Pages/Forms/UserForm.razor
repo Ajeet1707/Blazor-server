@@ -1,0 +1,55 @@
+﻿@page "/userform"
+@using BlazorServerApp.Data.Models
+@using BlazorServerApp.Data.Infrastructure
+@inject IDemoService DemoService
+@attribute [Authorize]
+
+
+<h3>Simple Blazor Form</h3>
+
+<EditForm Model="@userData" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label for="name">Name:</label>
+        <InputText id="name" @bind-Value="userData.Name" class="form-control" />
+        <ValidationMessage For="@(() => userData.Name)" />
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <InputText id="email" @bind-Value="userData.Email" class="form-control" />
+        <ValidationMessage For="@(() => userData.Email)" />
+    </div>
+
+    <div>
+        <label for="age">Age:</label>
+        <InputNumber id="age" @bind-Value="userData.Age" class="form-control" />
+        <ValidationMessage For="@(() => userData.Age)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+@if (formSubmitted)
+{
+    <p>@message</p>
+    <p>Name: @userData.Name</p>
+    <p>Email: @userData.Email</p>
+    <p>Age: @userData.Age</p>
+}
+
+@code {
+    private UserData userData = new UserData();
+    private bool formSubmitted = false;
+    private string message;
+
+    private void HandleValidSubmit()
+    {
+        message = DemoService.UserData(userData);
+        formSubmitted = true;
+    }
+}
+
+

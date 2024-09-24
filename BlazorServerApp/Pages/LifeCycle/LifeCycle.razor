@@ -1,0 +1,27 @@
+﻿@page "/lifecycle"
+@attribute [Authorize]
+
+
+<h3>LifeCycle</h3>
+
+
+@code {
+    //First one to run
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("I'm on intialized for component");
+    }
+    //second one to run
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine("I'm on ParameterSet for component");
+    }
+    //third one to run
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine("I'm on AfterRender for component. First time"+ firstRender);
+    }
+
+   
+
+}

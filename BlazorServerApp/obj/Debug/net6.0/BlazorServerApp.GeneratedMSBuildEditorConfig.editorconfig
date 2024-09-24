@@ -1,0 +1,139 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = BlazorServerApp
+build_property.RootNamespace = BlazorServerApp
+build_property.ProjectDir = D:\DotNetProject\BlazorDemo\Blazor Server\BlazorServerApp\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\DotNetProject\BlazorDemo\Blazor Server\BlazorServerApp
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Account/AccessDenied.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Account/LoggedOut.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dnZWRPdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Account/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/ChatHubSingleR/Chathub.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhdEh1YlNpbmdsZVJcQ2hhdGh1Yi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/DependencyInjection/Dependency.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwZW5kZW5jeUluamVjdGlvblxEZXBlbmRlbmN5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Forms/UserForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXNcVXNlckZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/HTTPCalls/ImportHttp.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSFRUUENhbGxzXEltcG9ydEh0dHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/ImportJS/JsImporter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW1wb3J0SlNcSnNJbXBvcnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/LifeCycle/LifeCycle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlmZUN5Y2xlXExpZmVDeWNsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Localization/Local.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9jYWxpemF0aW9uXExvY2FsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Localization/LocalAndGlobal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9jYWxpemF0aW9uXExvY2FsQW5kR2xvYmFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/ParameterSharing/ChildC.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyU2hhcmluZ1xDaGlsZEMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/ParameterSharing/ParentC.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyU2hhcmluZ1xQYXJlbnRDLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/RoutingURL/Navigate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm91dGluZ1VSTFxOYXZpZ2F0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/RoutingURL/QueryNavigator.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm91dGluZ1VSTFxRdWVyeU5hdmlnYXRvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/RoutingURL/RoutingURL.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm91dGluZ1VSTFxSb3V0aW5nVVJMLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Storage/SessionStorage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmFnZVxTZXNzaW9uU3RvcmFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Toaster/Toaster.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG9hc3RlclxUb2FzdGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Virtualization/CustomVirtualize.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlydHVhbGl6YXRpb25cQ3VzdG9tVmlydHVhbGl6ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-gp1kaosdc3
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-01dw2z9bbm
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DotNetProject/BlazorDemo/Blazor Server/BlazorServerApp/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

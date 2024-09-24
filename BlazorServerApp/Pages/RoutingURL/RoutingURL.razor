@@ -1,0 +1,48 @@
+﻿@page "/routing/{id}/{name}"
+@inject NavigationManager Navigation
+@attribute [Authorize]
+
+
+<h3>RoutingURL</h3>
+<div>
+    <p>Getting the id : @Id</p>
+    <p>Getting the name : @Name</p>
+    @*Using nav-link to *@
+    <NavLink href="navigate/12" ActiveClass="highlighted-link active">About</NavLink>
+    <input type="text" @bind="Val" />
+
+    @* Using Navigation manger to navigate through URL*@
+    <button @onclick="Navigate">NavigateManager</button>
+    <button @onclick="QueryParameter">QueryParameter</button>
+
+</div>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public int Val { get; set; }
+
+    private void Navigate()
+    {
+        // Use NavigationManager to navigate programmatically
+        Navigation.NavigateTo("/navigate/12");
+
+        //below example is to reload the page forcefully.
+       // Navigation.NavigateTo("about", forceReload: true);
+        
+       //Below example is to navigate to the page without storing the history of previous page in the stack.
+        //Navigation.NavigateTo("about", replace: true);
+    }
+     
+
+     private void QueryParameter()
+    {
+        // Use NavigationManager to navigate programmatically
+        Navigation.NavigateTo("/query?id=123&valid=true");
+    }
+}

@@ -1,0 +1,133 @@
+﻿@page "/toaster"
+@using BlazorBootstrap
+@inject IToastService toastService
+@* @inject Blazored.Toast.Services.IToastService toastService *@
+
+
+
+<h3>Toaster using Blazored Toaster</h3>
+
+<button @onclick="() =>ShowMessage(ToastType.Success)">Show Success Toast</button>
+<button @onclick="() =>ShowMessage(ToastType.Danger)">Show Error Toast</button>
+<button @onclick="() =>ShowMessage(ToastType.Info)">Show Info Toast</button>
+<button @onclick="() =>ShowMessage(ToastType.Warning)">Show Warning Toast</button>
+
+
+
+<h3>Toaster using MatBlazor</h3>
+
+<button @onclick="ShowSuccessToast">Show Success Toast</button>
+<button @onclick="ShowErrorToast">Show Error Toast</button>
+<button @onclick="ShowInfoToast">Show Info Toast</button>
+<button @onclick="ShowWarningToast">Show Warning Toast</button>
+
+@* <button @onclick="ShowMatSuccessToast">Show Success Toast</button>
+<button @onclick="ShowMatErrorToast">Show Error Toast</button>
+<button @onclick="ShowMatInfoToast">Show Info Toast</button>
+<button @onclick="ShowMatWarningToast">Show Warning Toast</button> *@
+
+
+@code {
+
+    private void ShowSuccessToast()
+    {
+        toastService.ShowSuccess("This is a success toast!");
+    }
+    private void ShowErrorToast()
+    {
+        toastService.ShowError("This is a Error toast!");
+    }
+    private void ShowInfoToast()
+    {
+        toastService.ShowInfo("This is a Info toast!");
+    }
+    private void ShowWarningToast()
+    {
+        toastService.ShowWarning("This is a Warning toast!");
+    }
+
+
+    List<ToastMessage> messages = new List<ToastMessage>();
+    ToastsPlacement toastsPlacement = ToastsPlacement.TopRight;
+
+    private void ShowMessage(ToastType toastType)
+    {
+        messages.Add(CreateToastMessage(toastType));
+    }
+
+    private ToastMessage CreateToastMessage(ToastType toastType)
+    => new ToastMessage
+        {
+            Type = toastType,
+            Title = "Blazor Bootstrap",
+            HelpText = $"{DateTime.Now}",
+            Message = $"Hello, world! This is a toast message. DateTime: {DateTime.Now}",
+        };
+
+    private void ShowMessage2(ToastType toastType) => messages.Add(CreateToastMessage2(toastType));
+
+    private ToastMessage CreateToastMessage2(ToastType toastType)
+    => new ToastMessage
+        {
+            Type = toastType,
+            Message = $"Hello, world! This is a simple toast message. DateTime: {DateTime.Now}",
+        };
+
+
+    private void ShowMessage3(ToastType toastType)
+    {
+        var toast = CreateToastMessage3(toastType);
+        messages.Add(toast);
+
+        // Set up the auto-remove logic after the delay
+        Task.Delay(5000).ContinueWith(t =>
+        {
+            InvokeAsync(() => messages.Remove(toast));
+            StateHasChanged();
+        });
+    }
+
+
+    private ToastMessage CreateToastMessage3(ToastType toastType)
+      => new ToastMessage
+          {
+              Type = toastType,
+              Title = "Auto Hide Toast",
+              HelpText = $"{DateTime.Now}",
+              Message = $"This toast will auto-hide. DateTime: {DateTime.Now}",
+          };
+
+
+    private void ChangePlacement(ToastsPlacement placement)
+    {
+        if (!messages.Any())
+        {
+            messages.Add(
+                new ToastMessage()
+                    {
+                        Type = ToastType.Success,
+                        Title = "Blazor Bootstrap",
+                        HelpText = $"{DateTime.Now}",
+                        Message = $"Hello, world! This is a toast message. DateTime: {DateTime.Now}",
+                    });
+        }
+        toastsPlacement = placement;
+    }
+
+    // private void ShowMatSuccessToast()
+    // {
+    //     matToaster.Add("Operation was successful", MatToastType.Success);
+    // }
+    // private void ShowMatErrorToast()
+    // {
+    //     matToaster.Add("Operation was successful", MatToastType.Danger);
+    // }
+    // private void ShowMatInfoToast()
+    // {
+    //     matToaster.Add("Operation was successful", MatToastType.Info);
+    // }
+    // private void ShowMatWarningToast()
+    // {
+    //     matToaster.Add("Operation was successful", MatToastType.Warning);
+    // }
+}

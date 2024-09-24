@@ -1,0 +1,40 @@
+﻿@page "/logout"
+@using Microsoft.AspNetCore.Authentication
+@using BlazorServerApp.Data.CustomAuthorization
+@inject NavigationManager navigate
+@* @inject CustomAuthenticationStateProvider custom *@
+@inject BlazorSchoolAuthenticationStateProvider blazor
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body flex-column">
+                <div class="text-center mt-2">
+                    <h3>LoggedOut</h3>
+                </div>
+                <div class="text-center mt-2">
+                    <span class="text-danger">You are Logged out Successfully</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [CascadingParameter]
+    private HttpContent httpContent{ get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+       
+        await base.OnInitializedAsync();
+        // if(HttpContent.User.Identity.IsAuthenticated)
+        // {
+        blazor.LogoutAsync();
+            navigate.NavigateTo("/logout", true);
+        //}
+    }
+
+}

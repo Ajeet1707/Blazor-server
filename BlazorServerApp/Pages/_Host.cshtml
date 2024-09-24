@@ -1,0 +1,13 @@
+﻿@page "/"
+@namespace BlazorServerApp.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+
+<component type="typeof(App)" render-mode="ServerPrerendered" />
+<script type="module" src="~/js/function.js"></script>
+<script type="module" src="~/js/sessionStorage.js"></script>
+
+
+

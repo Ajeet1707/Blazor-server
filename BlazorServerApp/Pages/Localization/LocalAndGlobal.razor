@@ -1,0 +1,67 @@
+﻿@page "/local"
+@* this is used for the localization *@
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+@inject NavigationManager nav
+@inject IStringLocalizer<Index> Localizer
+
+<h3>LocalAndGlobal</h3>
+
+<div>
+    <select @bind="Culture">
+        <option value="en-US">English</option>
+        <option value="fr-FR">French</option>
+    </select>
+</div>
+
+
+@* Greeting here is an variable in the resource file  *@
+<h3>@Localizer["Greeting"]</h3>
+
+<button class="btn btn-secondary" @onclick="ChangeToEnglish">English</button>
+<button class="btn btn-primary" @onclick="ChangeToFrench">French</button>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        Culture = CultureInfo.CurrentCulture;
+    }
+
+    private CultureInfo Culture
+    {
+        get
+        {
+            return CultureInfo.CurrentCulture;
+        }
+        set
+        {
+            if(CultureInfo.CurrentCulture != value)
+            {
+                var uri = new Uri(nav.Uri).GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+                var cultureEscaped = Uri.EscapeDataString(value.Name);
+                var uriEscaped = Uri.EscapeDataString(uri);
+                nav.NavigateTo($"Culture/Set?culture={cultureEscaped}&redirectUri={uriEscaped}", forceLoad: true);
+            }
+        }
+    }
+
+    private async Task ChangeToEnglish()
+    {
+        await ChangeCulture("en-US");
+    }
+
+    private async Task ChangeToFrench()
+    {
+        await ChangeCulture("fr-FR");
+    }
+
+    private async Task ChangeCulture(string culture)
+    {
+        // var module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/function.js");
+        // await module.InvokeVoidAsync("blazorCulture.set", culture);
+        nav.NavigateTo("/local/Culture", forceLoad: true);
+    }
+
+
+}

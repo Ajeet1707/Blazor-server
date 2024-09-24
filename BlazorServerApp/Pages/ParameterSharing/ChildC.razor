@@ -1,0 +1,44 @@
+﻿<h3>ChildC</h3>
+
+<div>
+   <p>
+        Message from the parent : @Message
+    </p>
+
+    <div>
+    <p>Message: @Message</p>
+    <input type="text" @bind="@Message" @bind:event="oninput" @onchange="OnMessageChanged" />
+    </div>
+</div>
+@* Render Fragment *@
+<div>
+    <div>
+        <h3>Component Header</h3>
+        @ChildContent
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string Message { get; set; }
+
+    [Parameter]
+    public EventCallback<string> MessageChanged { get; set; }
+
+    private async Task OnMessageChanged(ChangeEventArgs e)
+    {
+
+        Console.WriteLine(e.Value);
+        // Update the Message parameter
+        Message = e.Value.ToString();
+
+        // Invoke the EventCallback to notify the parent component of the change
+        await MessageChanged.InvokeAsync(Message);
+    }
+
+
+
+}

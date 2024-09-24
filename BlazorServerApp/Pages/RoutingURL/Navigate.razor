@@ -1,0 +1,20 @@
+﻿@page "/navigate/{id:int?}"
+@attribute [Authorize]
+
+<h3>Navigate</h3>
+<div>
+    @if (Id.HasValue)
+    {
+        <p>It contains the value: @Id</p>
+    }
+    else
+    {
+        <p>It does not contain the value</p>
+    }
+</div>
+
+@code {
+    // Declare the parameter as a nullable integer to handle the optional aspect
+    [Parameter]
+    public int? Id { get; set; }
+}

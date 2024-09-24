@@ -1,0 +1,59 @@
+﻿@page "/jsimport"
+@using BlazorServerApp.Data
+@inject IJSRuntime JS
+@attribute [Authorize]
+
+<h3>JsImporter</h3>
+
+<button @onclick="CallShowAlert">Show Alert</button>
+<button @onclick="DisplayCurrentDateTime">Display Current Date & Time</button>
+
+<p>@currentDateTime</p>
+
+<h3>Call JavaScript Function with Parameters</h3>
+<button @onclick="CallJavaScriptFunction">Call JS Function</button>
+
+@* <h3>Pass C# Object Reference to JavaScript</h3>
+<button @onclick="CallJavaScriptWithObjectReference">Call JS with .NET Object</button> *@
+
+
+@code {
+
+    private string currentDateTime;
+
+    // //private DontNetCode dotNetObject = new DontNetCode();
+
+    // private async Task CallJavaScriptWithObjectReference()
+    // {
+    //     // Create a .NET object reference
+    //     var dotNetRef = DotNetObjectReference.Create(dotNetObject);
+
+    //     // Pass the object reference to the JavaScript function
+    //     await JS.InvokeVoidAsync("interactWithDotNetObject", dotNetRef);
+    // }
+
+    private async Task CallShowAlert()
+    {
+        // Import the JavaScript module
+        var module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/function.js");
+
+        // Call the 'showAlert' function from the JavaScript module
+        await module.InvokeVoidAsync("showAlert", "Hello from Blazor!");
+    }
+
+    private async Task DisplayCurrentDateTime()
+    {
+        // Import the JavaScript module
+        var module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/function.js");
+
+        // Call the 'getCurrentDateTime' function and get the result
+        currentDateTime = await module.InvokeAsync<string>("getCurrentDateTime");
+    }
+
+    private async Task CallJavaScriptFunction()
+    {
+        var module = await JS.InvokeAsync<IJSObjectReference>("import", "./js/function.js");
+        // Call the JavaScript function 'message' with parameters
+        await module.InvokeVoidAsync("message", "Hello from Blazor!", 5);
+    }
+}

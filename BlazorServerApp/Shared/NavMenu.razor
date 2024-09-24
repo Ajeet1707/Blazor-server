@@ -1,0 +1,103 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">BlazorServerApp</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="toaster">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Toaster
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="local">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Localization
+            </NavLink>
+        </div>
+        <AuthorizeView Roles="Admin,View">
+            <Authorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="lifecycle">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> LifeCycle
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="Chat">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> ChatHub
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="parent">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Parent
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="routing/123/Varun">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> RoutingURL
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="jsimport">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> JSRuntime Import
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="injection">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> DependencyInjection
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="userform">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> User Forms
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="importdata">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> HTTP Call Data
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="session">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Storage
+                    </NavLink>
+                </div>
+            </Authorized>
+            <NotAuthorized>
+                
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="counter">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Counter
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="fetchdata">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+                    </NavLink>
+                </div>
+            </NotAuthorized>
+        </AuthorizeView>
+        
+        
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

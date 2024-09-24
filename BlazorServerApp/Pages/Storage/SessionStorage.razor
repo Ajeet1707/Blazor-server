@@ -1,0 +1,76 @@
+﻿@page "/session"
+@using BlazorServerApp.Data.Service
+@inject IJSRuntime JSRuntime
+@inject CookieService CookieService
+
+<h3>Session Storage Example</h3>
+
+<p>@message</p>
+
+<button @onclick="SetSessionStorage">Set Session Storage</button>
+<button @onclick="GetSessionStorage">Get Session Storage</button>
+<button @onclick="RemoveSessionStorage">Remove Session Storage</button>
+<button @onclick="ClearSessionStorage">Clear Session Storage</button>
+
+<h3>Cookie Example</h3>
+
+<p>@cokMessage</p>
+
+<button @onclick="SetCookie">Set Cookie</button>
+<button @onclick="GetCookie">Get Cookie</button>
+<button @onclick="DeleteCookie">Delete Cookie</button>
+
+@code {
+    private string cokMessage;
+
+    private void SetCookie()
+    {
+        CookieService.SetCookie("TestCookie", "Hello from Blazor!", 30);
+        cokMessage = "Cookie set!";
+    }
+
+    private void GetCookie()
+    {
+        var cookieValue = CookieService.GetCookie("TestCookie");
+        if (cookieValue != null)
+        {
+            cokMessage = $"Cookie value: {cookieValue}";
+        }
+        else
+        {
+            cokMessage = "Cookie not found!";
+        }
+    }
+
+    private void DeleteCookie()
+    {
+        CookieService.DeleteCookie("TestCookie");
+        cokMessage = "Cookie deleted!";
+    }
+
+    private string message;
+
+    private async Task SetSessionStorage()
+    {
+        await JSRuntime.InvokeVoidAsync("sessionStorageInterop.setItem", "key", "Hello from Blazor!");
+        message = "Session storage set!";
+    }
+
+    private async Task GetSessionStorage()
+    {
+        var value = await JSRuntime.InvokeAsync<string>("sessionStorageInterop.getItem", "key");
+        message = value != null ? $"Session storage value: {value}" : "Session storage is empty.";
+    }
+
+    private async Task RemoveSessionStorage()
+    {
+        await JSRuntime.InvokeVoidAsync("sessionStorageInterop.removeItem", "key");
+        message = "Session storage item removed.";
+    }
+
+    private async Task ClearSessionStorage()
+    {
+        await JSRuntime.InvokeVoidAsync("sessionStorageInterop.clear");
+        message = "All session storage cleared.";
+    }
+}

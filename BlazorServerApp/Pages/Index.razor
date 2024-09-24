@@ -1,0 +1,44 @@
+﻿@page "/"
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+@* @using BlazorServerApp.Resource *@
+@using BlazorServerApp.Data
+@* @inject IStringLocalizer<Resource> localizer *@
+@inject IJSRuntime JS
+
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+<AuthorizeView>
+    <Authorized>
+        <!-- Content for authorized users -->
+        @* <p>@localizer["Greeting"]</p> *@
+        <p>Welcome back, authorized user!</p>
+        <p>You can access protected content.</p>
+    </Authorized>
+    <NotAuthorized>
+        <!-- Content for unauthorized users -->
+        <p>You are not authorized to view this content.</p>
+        <p>Please <a href="/login">login</a> to gain access.</p>
+    </NotAuthorized>
+</AuthorizeView>
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+@* this is for the .net code object reference
+<h3>Pass C# Object Reference to JavaScript</h3>
+<button @onclick="CallJavaScriptWithObjectReference">Call JS with .NET Object</button> *@
+
+@code {
+    private DontNetCode dotNetObject = new DontNetCode();
+
+    private async Task CallJavaScriptWithObjectReference()
+    {
+        // Create a .NET object reference
+        var dotNetRef = DotNetObjectReference.Create(dotNetObject);
+
+        // Pass the object reference to the JavaScript function
+        await JS.InvokeVoidAsync("interactWithDotNetObject", dotNetRef);
+    }
+}

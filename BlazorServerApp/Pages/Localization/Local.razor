@@ -1,0 +1,39 @@
+﻿@page "/localizations"
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+@inject NavigationManager nav
+@inject IStringLocalizer<Index> Localizer
+
+<div>
+    <select @bind="Culture">
+        <option value="en-US">English</option>
+        <option value="fr-FR">French</option>
+    </select>
+</div>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        Culture = CultureInfo.CurrentCulture;
+    }
+
+    private CultureInfo Culture
+    {
+        get
+        {
+            return CultureInfo.CurrentCulture;
+        }
+        set
+        {
+            if (CultureInfo.CurrentCulture != value)
+            {
+                var uri = new Uri(nav.Uri).GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+                var cultureEscaped = Uri.EscapeDataString(value.Name);
+                var uriEscaped = Uri.EscapeDataString(uri);
+                nav.NavigateTo($"Culture/Set?culture={cultureEscaped}&redirectUri={uriEscaped}", forceLoad: true);
+            }
+        }
+    }
+
+}

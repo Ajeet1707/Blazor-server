@@ -1,0 +1,36 @@
+﻿@page "/parent"
+@attribute [Authorize]
+
+<h3>ParentC</h3>
+<div>
+
+    <p>Parent Message : @ParentMessage</p>
+    @* Sharing parameter from one componet to another*@
+    <ChildC Message=@ParentMessage MessageChanged="@OnChildMessageChanged"></ChildC>
+</div>
+
+<h3>
+    Fragment Rendering
+</h3>
+<div>
+    <div>
+        <ChildC>
+            <p>This is the content passed to Child for Fragment Rendering.</p>
+        </ChildC>
+    </div>
+</div>
+
+@code {
+
+    
+
+    private string ParentMessage = "Initial Message from Parent";
+
+    private void OnChildMessageChanged(string newMessage)
+    {
+        // Handle the change from the child component
+        ParentMessage = newMessage;
+        Console.WriteLine($"Message updated in Parent: {ParentMessage}");
+    }
+
+}

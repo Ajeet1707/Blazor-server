@@ -1,0 +1,49 @@
+﻿@page "/importdata"
+@using BlazorServerApp.Data.Models
+@using BlazorServerApp.Data.Infrastructure
+@inject IImportData Import
+@attribute [Authorize]
+
+
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row">
+            <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var da in data)
+            {
+                <tr>
+                    <td>@da.Id</td>
+                    <td>@da.ProdName</td>
+                    <td>@da.Category</td>
+                </tr>
+            }
+           </tbody>
+           </table>
+           </div>
+    </div>
+</div>
+
+<h3>ImportData</h3>
+
+@code {
+    private List<ImportData> data = new List<ImportData>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetImportData();
+    }
+
+    private async Task GetImportData()
+    {
+        data = await Import.GetImportData();
+    }
+
+}
